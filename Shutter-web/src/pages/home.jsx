@@ -10,29 +10,96 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Home(){
     
-    // const Camera = useRef(null);
+    const Camera = useRef(null);
 
     useGSAP(() => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: ".camscrollani",
             start: "top 18%",
+            end:"top -182%",
             scrub: 1,
             // markers: true,
           },
         });
+        const tl2 = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".photo",
+            start: "top 0%",
+            end:"top -100%",
+            scrub: 1,
+            markers: true,
+            pin:true
+          },
+        });
+
         tl.to(".camscrollani", {
           x: "13vw",
           y: "95vh",
           scale: 1.3,
-          rotate: -25,
+          rotate: -25
         });
+        tl.to(".camscrollani", {
+          x: "0vw",
+          y: "205vh",
+          scale: 1,
+          rotate:"0"
+        });
+        tl2.from(".ph1",{
+            x:-250,
+            y:-50,
+            scale:.3,
+            opacity:0
+        });
+        tl2.from(".ph2",{
+            x:300,
+            y:-80,
+            scale:.3,
+            opacity:0
+        } , "<");
+        tl2.to(".ph1",{
+            x:500,
+            y:50,
+            scale:1.3,
+        });
+        tl2.to(".ph2",{
+            x:-350,
+            y:20,
+            scale:1.2,
+        },"<");
+        tl2.from(".ph3",{
+            x:-250,
+            y:-100,
+            opacity:0,
+            scale:.3,
+        },"<");
+        tl2.from(".ph4",{
+            x:300,
+            y:-60,
+            opacity:0,
+            scale:.3,
+        },"<");
+        tl2.from(".ph5",{
+            x:-350,
+            y:100,
+            opacity:0,
+            scale:.3,
+        },"<");
+        tl2.from(".ph6",{
+            x:450,
+            y:140,
+            opacity:0,
+            scale:.3,
+        },"<");
+
+          
       });
 
 
     return(
         <>
         {/* -------------------page 1------------------------- */}
+        <div className="pinned">
         <div>
             <Bggrid color="black"/>
             <div className="w-screen h-screen bg-[#FFEBD5] -z-10"></div>
@@ -49,11 +116,9 @@ function Home(){
             <p className="text-[20px]">More Than <span className="font-bold">Just a Camera it’s Your</span> Creative Partner</p> 
             </div>
             <div className="w-[206px] h-[92px] absolute bottom-[26%] left-[14%] rounded-[50%] bg-black -rotate-z-10 flex justify-center items-center">
-                <p className="text-white text-[20px] w-[116px] text-center">EXPLORE MORE</p>
+                <p className="text-white text-[20px] w-[116px] text-center">SCROLL DOWN</p>
             </div>
-            <div className="camscrollani h-[618px] w-[825px] absolute top-[26%] left-[27%] rotate-z-11 p-18 drop-shadow-[50px_50px_25px_rgba(0,0,0,0.5)] z-20">
-                <img src="/SScamerac.png" />
-            </div>
+            
         </div>
 
 
@@ -90,18 +155,42 @@ function Home(){
 
 
 
-        {/* -------------------page 2------------------------- */}
-        <div className="h-screen w-screen bg-[#FFEBD5]">
+        {/* -------------------page 3------------------------- */}
+        <div className="photo relative h-screen w-screen bg-[#FFEBD5] flex flex-col">
             <Bggrid color="black"/>
-            <div>
-                <div>
-
+            <div className=" w-[80%] h-[40%] m-[10%] mt-[5%] flex justify-between">
+                <div className="w-[50%]">
+                    <p style={{ fontFamily: 'ifcwildrodeo' }} className="text-[5rem] tracking-wide leading-17">Where Every Click Becomes a Memory</p>
                 </div>
-                <div>
-                    <div></div>
-                    <div></div>
+                <div className="w-[40%]">
+                    <div>
+                        <p className="text-[1.2rem]">Shutter Society captures fleeting emotions, untold stories, and vibrant moments, transforming ordinary scenes into powerful visual narratives through passion, creativity, and collective vision.</p>
+                    </div>
+                    <div className="w-[206px] h-[92px] rounded-[50%] bg-black -rotate-z-10 flex justify-center items-center m-5">
+                        <p className="text-white text-[20px] w-[116px] text-center">EXPLORE MORE</p>
+                    </div>
                 </div>
             </div>
+            <div className="camscrollani h-[618px] w-[825px] absolute top-[-173%] left-[27%] rotate-z-11 p-18 drop-shadow-[50px_50px_25px_rgba(0,0,0,0.5)] z-20">
+                <img src="/SScamerac.png" />
+            </div>
+
+
+            <div className="ph1 relative top-[15%] left-[59%] h-[20%] w-[10%] bg-black z-25"></div>
+            <div className="ph2 relative top-[10%] left-[29%] h-[20%] w-[10%] bg-black z-25"></div>
+            <div className="ph3 relative top-[1%] left-[59%] h-[20%] w-[10%] bg-black z-25"></div>
+            <div className="ph4 relative top-[-10%] left-[29%] h-[20%] w-[10%] bg-black z-25"></div>
+            <div className="ph5 relative top-[-28%] left-[64%] h-[20%] w-[10%] bg-black z-25"></div>
+            <div className="ph6 relative top-[-37%] left-[22%] h-[20%] w-[10%] bg-black z-25"></div>
+            <div className="ph7 relative h-[10%] w-[10%] bg-black"></div>
+            <div className="ph8 relative h-[10%] w-[10%] bg-black"></div>
+
+
+        </div>
+
+        <div className="photo h-screen w-screen bg-[#FFEBD5] flex">
+            <Bggrid color="black"/>
+        </div>
         </div>
         </>
     );
